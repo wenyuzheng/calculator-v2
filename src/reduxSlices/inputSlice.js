@@ -6,15 +6,19 @@ const inputSlice = createSlice({
   name: "input",
   initialState,
   reducers: {
+    inputAdded(state, action) {
+      state += action.payload;
+      return state;
+    },
     inputUpdate(state, action) {
-      state = action.payload;
+      return action.payload;
     },
     inputReset(state, action) {
-      state = "0";
+      return "0";
     },
   },
 });
 
-export const { inputUpdate, inputReset } = inputSlice.actions;
+export const { inputAdded, inputUpdate, inputReset } = inputSlice.actions;
 
 export default inputSlice.reducer;
