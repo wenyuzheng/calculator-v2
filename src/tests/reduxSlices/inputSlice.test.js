@@ -1,5 +1,6 @@
 import inputSlice, {
   inputAdded,
+  inputRemoveLastOne,
   inputReplace,
   inputReset,
 } from "../../reduxSlices/inputSlice";
@@ -37,6 +38,20 @@ describe("inputSlice", () => {
     const state = "1";
     const action = inputReplace("x");
     const expected = "x";
+    expect(inputSlice(state, action)).toEqual(expected);
+  });
+
+  test("inputRemoveLastOne eg1", () => {
+    const state = "12345";
+    const action = inputRemoveLastOne();
+    const expected = "1234";
+    expect(inputSlice(state, action)).toEqual(expected);
+  });
+
+  test("inputRemoveLastOne eg2", () => {
+    const state = "1";
+    const action = inputRemoveLastOne();
+    const expected = "0";
     expect(inputSlice(state, action)).toEqual(expected);
   });
 

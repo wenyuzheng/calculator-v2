@@ -17,12 +17,18 @@ const inputSlice = createSlice({
     inputReplace(state, action) {
       return action.payload;
     },
+    inputRemoveLastOne(state, action) {
+      if (state.length === 1) return "0";
+
+      return state.substring(0, state.length - 1);
+    },
     inputReset(state, action) {
       return "0";
     },
   },
 });
 
-export const { inputAdded, inputReplace, inputReset } = inputSlice.actions;
+export const { inputAdded, inputReplace, inputRemoveLastOne, inputReset } =
+  inputSlice.actions;
 
 export default inputSlice.reducer;

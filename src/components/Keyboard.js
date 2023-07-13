@@ -1,9 +1,10 @@
 import Key from "./Key";
-import { numbers, operators, equals, clear } from "../constants/keys";
+import { numbers, operators, equals, clear, del } from "../constants/keys";
 import { useDispatch, useSelector } from "react-redux";
 import {
   inputAdded,
   inputReplace,
+  inputRemoveLastOne,
   inputReset,
 } from "../reduxSlices/inputSlice";
 import {
@@ -54,6 +55,11 @@ const Keyboard = () => {
     dispatch(expressionReset());
   };
 
+  const handleDelClick = () => {
+    dispatch(inputRemoveLastOne());
+    dispatch(expressionRemoveLastOne());
+  };
+
   return (
     <div>
       {numbers.map((k) => (
@@ -66,6 +72,7 @@ const Keyboard = () => {
 
       <Key key={equals.id} value={equals} onClick={handleEqualsClick} />
       <Key key={clear.id} value={clear} onClick={handleClearClick} />
+      <Key key={del.id} value={del} onClick={handleDelClick} />
     </div>
   );
 };

@@ -51,5 +51,6 @@ const operators = [
 const equals = { id: "equals", text: "=", group: "equals" };
 
 const clear = { id: "clear", text: "AC", group: "clear" };
+const del = { id: "del", text: "Del", group: "del" };
 
-export { numbers, operators, equals, clear };
+export { numbers, operators, equals, clear, del };
