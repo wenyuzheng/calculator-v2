@@ -5,9 +5,9 @@ const Display = () => {
   const expression = useSelector((state) => state.expression);
 
   return (
-    <div id="display">
+    <div id="display-screen">
       <div id="expression">{expression}</div>
-      <div id="input">{input}</div>
+      <div id="display">{input}</div>
     </div>
   );
 };

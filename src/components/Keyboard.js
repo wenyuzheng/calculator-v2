@@ -8,6 +8,7 @@ import {
 } from "../reduxSlices/inputSlice";
 import {
   expressionAdded,
+  expressionRemoveLastOne,
   expressionReset,
 } from "../reduxSlices/expressionSlice";
 
@@ -34,6 +35,9 @@ const Keyboard = () => {
 
   const handleOperatorClick = (text) => {
     dispatch(inputReplace(text));
+    if (operators.find((op) => op.text === inputState) && text !== "-") {
+      dispatch(expressionRemoveLastOne());
+    }
     dispatch(expressionAdded(text));
   };
 

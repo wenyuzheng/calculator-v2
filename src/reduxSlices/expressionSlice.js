@@ -10,12 +10,16 @@ const expressionSlice = createSlice({
       state += action.payload;
       return state;
     },
+    expressionRemoveLastOne(state, action) {
+      return state.substring(0, state.length - 1);
+    },
     expressionReset(state, action) {
       return "";
     },
   },
 });
 
-export const { expressionAdded, expressionReset } = expressionSlice.actions;
+export const { expressionAdded, expressionRemoveLastOne, expressionReset } =
+  expressionSlice.actions;
 
 export default expressionSlice.reducer;
