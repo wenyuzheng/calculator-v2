@@ -5,7 +5,7 @@ const Keyboard = () => {
   return (
     <div>
       {keys.map((k) => (
-        <Key key={k.id} id={k.id} text={k.text} />
+        <Key key={k.id} value={k} />
       ))}
     </div>
   );
