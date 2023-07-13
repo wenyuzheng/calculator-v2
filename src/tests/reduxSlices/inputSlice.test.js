@@ -35,8 +35,8 @@ describe("inputSlice", () => {
 
   test("inputReplace", () => {
     const state = "1";
-    const action = inputReplace("100");
-    const expected = "100";
+    const action = inputReplace("x");
+    const expected = "x";
     expect(inputSlice(state, action)).toEqual(expected);
   });
 
