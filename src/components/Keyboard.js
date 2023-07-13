@@ -12,12 +12,15 @@ import {
   expressionRemoveLastOne,
   expressionReset,
 } from "../reduxSlices/expressionSlice";
+import { answerUpdated } from "../reduxSlices/answerSlice";
+import evaluate from "../functions/evaluate";
 
 const Keyboard = () => {
   const dispatch = useDispatch();
 
   const inputState = useSelector((state) => state.input);
   const expressionState = useSelector((state) => state.expression);
+  const answerState = useSelector((state) => state.answer);
 
   const handleNumberClick = (text) => {
     if (expressionState.includes("=")) {
@@ -44,7 +47,8 @@ const Keyboard = () => {
 
   const handleEqualsClick = () => {
     if (!expressionState.includes("=")) {
-      const answer = "10001";
+      const answer = evaluate(expressionState);
+      dispatch(answerUpdated(answer));
       dispatch(inputReplace(answer));
       dispatch(expressionAdded("=" + answer));
     }

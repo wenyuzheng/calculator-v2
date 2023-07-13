@@ -14,7 +14,7 @@ const expressionSlice = createSlice({
       return state.substring(0, state.length - 1);
     },
     expressionReset(state, action) {
-      return "";
+      return initialState;
     },
   },
 });

@@ -23,7 +23,7 @@ const inputSlice = createSlice({
       return state.substring(0, state.length - 1);
     },
     inputReset(state, action) {
-      return "0";
+      return initialState;
     },
   },
 });
