@@ -15,8 +15,6 @@ const inputSlice = createSlice({
       return state.length <= 2 ? parseFloat(state).toString() : state;
     },
     inputReplace(state, action) {
-      console.log("replace");
-
       return action.payload;
     },
     inputReset(state, action) {

@@ -18,8 +18,18 @@ const Keyboard = () => {
   const expressionState = useSelector((state) => state.expression);
 
   const handleNumberClick = (text) => {
-    dispatch(inputAdded(text));
-    dispatch(expressionAdded(text));
+    if (expressionState.includes("=")) {
+      dispatch(inputReset());
+      dispatch(expressionReset());
+
+      dispatch(inputReplace(text));
+      dispatch(expressionAdded(text));
+    } else {
+      operators.find((op) => op.text === inputState)
+        ? dispatch(inputReplace(text))
+        : dispatch(inputAdded(text));
+      dispatch(expressionAdded(text));
+    }
   };
 
   const handleOperatorClick = (text) => {
