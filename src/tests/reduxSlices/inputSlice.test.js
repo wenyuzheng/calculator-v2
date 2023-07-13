@@ -1,6 +1,6 @@
 import inputSlice, {
   inputAdded,
-  inputUpdate,
+  inputReplace,
   inputReset,
 } from "../../reduxSlices/inputSlice";
 
@@ -33,9 +33,9 @@ describe("inputSlice", () => {
     expect(inputSlice(state, action)).toEqual(expected);
   });
 
-  test("inputUpdate", () => {
+  test("inputReplace", () => {
     const state = "1";
-    const action = inputUpdate("100");
+    const action = inputReplace("100");
     const expected = "100";
     expect(inputSlice(state, action)).toEqual(expected);
   });

@@ -14,7 +14,7 @@ const inputSlice = createSlice({
       state += action.payload;
       return state.length <= 2 ? parseFloat(state).toString() : state;
     },
-    inputUpdate(state, action) {
+    inputReplace(state, action) {
       return action.payload;
     },
     inputReset(state, action) {
@@ -23,6 +23,6 @@ const inputSlice = createSlice({
   },
 });
 
-export const { inputAdded, inputUpdate, inputReset } = inputSlice.actions;
+export const { inputAdded, inputReplace, inputReset } = inputSlice.actions;
 
 export default inputSlice.reducer;
