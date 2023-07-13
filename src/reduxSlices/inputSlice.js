@@ -7,8 +7,12 @@ const inputSlice = createSlice({
   initialState,
   reducers: {
     inputAdded(state, action) {
+      if (action.payload === ".") {
+        return state.includes(".") ? state : (state += action.payload);
+      }
+
       state += action.payload;
-      return state;
+      return state.length <= 2 ? parseFloat(state).toString() : state;
     },
     inputUpdate(state, action) {
       return action.payload;

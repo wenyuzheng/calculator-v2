@@ -16,7 +16,7 @@ const keys = [
 
   // Operators
   { id: "add", text: "+" },
-  { id: "substract", text: "-" },
+  { id: "subtract", text: "-" },
   { id: "multiply", text: "x" },
   { id: "divide", text: "/" },
   { id: "equals", text: "=" },
