@@ -10,9 +10,10 @@ import {
 import {
   expressionAdded,
   expressionRemoveLastOne,
+  expressionReplace,
   expressionReset,
 } from "../reduxSlices/expressionSlice";
-import { answerUpdated } from "../reduxSlices/answerSlice";
+import { answerReset, answerUpdated } from "../reduxSlices/answerSlice";
 import evaluate from "../functions/evaluate";
 
 const Keyboard = () => {
@@ -23,7 +24,8 @@ const Keyboard = () => {
   const answerState = useSelector((state) => state.answer);
 
   const handleNumberClick = (text) => {
-    if (expressionState.includes("=")) {
+    if (answerState) {
+      dispatch(answerReset());
       dispatch(inputReset());
       dispatch(expressionReset());
 
@@ -38,6 +40,10 @@ const Keyboard = () => {
   };
 
   const handleOperatorClick = (text) => {
+    if (answerState) {
+      dispatch(expressionReplace(answerState));
+      dispatch(answerReset());
+    }
     dispatch(inputReplace(text));
     if (operators.find((op) => op.text === inputState) && text !== "-") {
       dispatch(expressionRemoveLastOne());
@@ -57,6 +63,7 @@ const Keyboard = () => {
   const handleClearClick = () => {
     dispatch(inputReset());
     dispatch(expressionReset());
+    dispatch(answerReset());
   };
 
   const handleDelClick = () => {

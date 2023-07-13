@@ -10,6 +10,9 @@ const expressionSlice = createSlice({
       state += action.payload;
       return state;
     },
+    expressionReplace(state, action) {
+      return action.payload;
+    },
     expressionRemoveLastOne(state, action) {
       return state.substring(0, state.length - 1);
     },
@@ -19,7 +22,11 @@ const expressionSlice = createSlice({
   },
 });
 
-export const { expressionAdded, expressionRemoveLastOne, expressionReset } =
-  expressionSlice.actions;
+export const {
+  expressionAdded,
+  expressionReplace,
+  expressionRemoveLastOne,
+  expressionReset,
+} = expressionSlice.actions;
 
 export default expressionSlice.reducer;
