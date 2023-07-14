@@ -7,12 +7,12 @@ const inputSlice = createSlice({
   initialState,
   reducers: {
     inputAdded(state, action) {
-      if (action.payload === ".") {
-        return state.includes(".") ? state : (state += action.payload);
+      if (action.payload === "." && state.includes(".")) {
+        return state;
       }
 
       state += action.payload;
-      return state.length <= 2 ? parseFloat(state).toString() : state;
+      return state.replace(/^0+(?=\d)/, "");
     },
     inputReplace(state, action) {
       return action.payload;

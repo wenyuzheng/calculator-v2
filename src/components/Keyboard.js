@@ -14,7 +14,6 @@ import {
   expressionReset,
 } from "../reduxSlices/expressionSlice";
 import { answerReset, answerUpdated } from "../reduxSlices/answerSlice";
-import evaluate from "../functions/evaluate";
 
 const Keyboard = () => {
   const dispatch = useDispatch();
@@ -29,12 +28,13 @@ const Keyboard = () => {
       dispatch(inputReset());
       dispatch(expressionReset());
 
-      dispatch(inputReplace(text));
+      dispatch(inputAdded(text));
       dispatch(expressionAdded(text));
     } else {
-      operators.find((op) => op.text === inputState)
-        ? dispatch(inputReplace(text))
-        : dispatch(inputAdded(text));
+      if (operators.find((op) => op.text === inputState)) {
+        dispatch(inputReset(text));
+      }
+      dispatch(inputAdded(text));
       dispatch(expressionAdded(text));
     }
   };
@@ -53,7 +53,7 @@ const Keyboard = () => {
 
   const handleEqualsClick = () => {
     if (!expressionState.includes("=")) {
-      const answer = eval(expressionState.replace(/x/g, "*"));
+      const answer = eval(expressionState.replace(/x/g, "*")).toString();
       dispatch(answerUpdated(answer));
       dispatch(inputReplace(answer));
       dispatch(expressionAdded("=" + answer));
