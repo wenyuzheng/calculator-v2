@@ -53,7 +53,7 @@ const Keyboard = () => {
 
   const handleEqualsClick = () => {
     if (!expressionState.includes("=")) {
-      const answer = evaluate(expressionState);
+      const answer = eval(expressionState.replace(/x/g, "*"));
       dispatch(answerUpdated(answer));
       dispatch(inputReplace(answer));
       dispatch(expressionAdded("=" + answer));

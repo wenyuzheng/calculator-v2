@@ -20,6 +20,7 @@ const expressionSlice = createSlice({
 
       state += action.payload;
       return state;
+      // return state.length <= 1 ? parseFloat(state).toString() : state;
     },
     expressionReplace(state, action) {
       return action.payload;
