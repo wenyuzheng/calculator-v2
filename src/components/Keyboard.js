@@ -66,7 +66,16 @@ const Keyboard = () => {
 
   const handleEqualsClick = () => {
     if (!expressionState.includes("=")) {
-      const answer = eval(expressionState.replace(/x/g, "*")).toString();
+      let answer = "0";
+      try {
+        answer = eval(expressionState.replace(/x/g, "*")).toString();
+      } catch (e) {
+        if (e instanceof SyntaxError) {
+          alert(e.message);
+          return;
+        }
+      }
+
       dispatch(answerUpdated(answer));
       dispatch(inputReplace(answer));
       dispatch(expressionAdded("=" + answer));
