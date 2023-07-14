@@ -1,56 +1,29 @@
-// const keys = [
-//   // Numbers
-//   { id: "zero", text: "0", group: "numbers" },
-//   { id: "one", text: "1", group: "numbers" },
-//   { id: "two", text: "2", group: "numbers" },
-//   { id: "three", text: "3", group: "numbers" },
-//   { id: "four", text: "4", group: "numbers" },
-//   { id: "five", text: "5", group: "numbers" },
-//   { id: "six", text: "6", group: "numbers" },
-//   { id: "seven", text: "7", group: "numbers" },
-//   { id: "eight", text: "8", group: "numbers" },
-//   { id: "nine", text: "9", group: "numbers" },
-//   { id: "decimal", text: ".", group: "numbers" },
-
-//   // Operators
-//   { id: "add", text: "+", group: "operators" },
-//   { id: "subtract", text: "-", group: "operators" },
-//   { id: "multiply", text: "x", group: "operators" },
-//   { id: "divide", text: "/", group: "operators" },
-
-//   // Equals
-//   { id: "equals", text: "=", group: "equals" },
-
-//   // Clear
-//   { id: "clear", text: "AC", group: "clear" },
-// ];
-
 const numbers = [
   // Numbers
-  { id: "zero", text: "0", group: "numbers" },
-  { id: "one", text: "1", group: "numbers" },
-  { id: "two", text: "2", group: "numbers" },
-  { id: "three", text: "3", group: "numbers" },
-  { id: "four", text: "4", group: "numbers" },
-  { id: "five", text: "5", group: "numbers" },
-  { id: "six", text: "6", group: "numbers" },
-  { id: "seven", text: "7", group: "numbers" },
-  { id: "eight", text: "8", group: "numbers" },
-  { id: "nine", text: "9", group: "numbers" },
-  { id: "decimal", text: ".", group: "numbers" },
+  { id: "zero", text: "0" },
+  { id: "one", text: "1" },
+  { id: "two", text: "2" },
+  { id: "three", text: "3" },
+  { id: "four", text: "4" },
+  { id: "five", text: "5" },
+  { id: "six", text: "6" },
+  { id: "seven", text: "7" },
+  { id: "eight", text: "8" },
+  { id: "nine", text: "9" },
+  { id: "decimal", text: "." },
 ];
 
 const operators = [
   // Operators
-  { id: "add", text: "+", group: "operators" },
-  { id: "subtract", text: "-", group: "operators" },
-  { id: "multiply", text: "x", group: "operators" },
-  { id: "divide", text: "/", group: "operators" },
+  { id: "add", text: "+" },
+  { id: "subtract", text: "-" },
+  { id: "multiply", text: "x" },
+  { id: "divide", text: "/" },
 ];
 
-const equals = { id: "equals", text: "=", group: "equals" };
+const equals = { id: "equals", text: "=" };
 
-const clear = { id: "clear", text: "AC", group: "clear" };
-const del = { id: "del", text: "Del", group: "del" };
+const clear = { id: "clear", text: "AC" };
+const del = { id: "del", text: "Del" };
 
 export { numbers, operators, equals, clear, del };

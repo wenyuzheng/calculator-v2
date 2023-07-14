@@ -7,16 +7,27 @@ const expressionSlice = createSlice({
   initialState,
   reducers: {
     expressionAdded(state, action) {
+      const nums = state.split(/[+\-x/]/);
+      const currNum = nums[nums.length - 1];
+
+      if (action.payload === ".") {
+        if (currNum.includes(".")) {
+          return state;
+        } else if (currNum.length === 0) {
+          state += "0";
+        }
+      }
+
       state += action.payload;
       return state;
     },
     expressionReplace(state, action) {
       return action.payload;
     },
-    expressionRemoveLastOne(state, action) {
+    expressionRemoveLastOne(state) {
       return state.substring(0, state.length - 1);
     },
-    expressionReset(state, action) {
+    expressionReset() {
       return initialState;
     },
   },
