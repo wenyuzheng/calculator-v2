@@ -31,8 +31,9 @@ const Keyboard = () => {
       dispatch(inputAdded(text));
       dispatch(expressionAdded(text));
     } else {
-      if (operators.find((op) => op.text === inputState)) {
-        dispatch(inputReset(text));
+      if (inputState.match(/[+\-x/]/)) {
+        // To replace the current operator and show number (reset + added = replace function)
+        dispatch(inputReset());
       }
       dispatch(inputAdded(text));
       dispatch(expressionAdded(text));
@@ -45,9 +46,21 @@ const Keyboard = () => {
       dispatch(answerReset());
     }
     dispatch(inputReplace(text));
-    if (operators.find((op) => op.text === inputState) && text !== "-") {
-      dispatch(expressionRemoveLastOne());
+
+    // Not allowed multiple "-"
+    if (inputState === "-" && text === "-") {
+      return;
     }
+
+    // If the last input is a operator, then replace that operator with the new input operator, unless the new input is "-"
+    if (inputState.match(/[+\-x/]/) && text !== "-") {
+      const arr = expressionState.split("");
+      while (isNaN(arr[arr.length - 1]) && arr[arr.length - 1] !== ".") {
+        arr.pop();
+      }
+      dispatch(expressionReplace(arr.join("")));
+    }
+
     dispatch(expressionAdded(text));
   };
 
