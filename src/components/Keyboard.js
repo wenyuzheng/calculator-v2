@@ -94,7 +94,7 @@ const Keyboard = () => {
   };
 
   return (
-    <Container style={{ width: 300 }}>
+    <Container>
       <Row>
         <Col sm={12}>
           <Row className="no-gutters">
