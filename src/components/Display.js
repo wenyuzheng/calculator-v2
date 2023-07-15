@@ -1,6 +1,5 @@
 import { Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import "./css/Display.css";
 
 const Display = () => {
   const input = useSelector((state) => state.input);
