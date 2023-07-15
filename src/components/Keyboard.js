@@ -14,6 +14,8 @@ import {
   expressionReset,
 } from "../reduxSlices/expressionSlice";
 import { answerReset, answerUpdated } from "../reduxSlices/answerSlice";
+import { Container, Row, Col } from "react-bootstrap";
+import "./css/Keyboard.css";
 
 const Keyboard = () => {
   const dispatch = useDispatch();
@@ -70,10 +72,8 @@ const Keyboard = () => {
       try {
         answer = eval(expressionState.replace(/x/g, "*")).toString();
       } catch (e) {
-        if (e instanceof SyntaxError) {
-          alert(e.message);
-          return;
-        }
+        alert(e.message);
+        return;
       }
 
       dispatch(answerUpdated(answer));
@@ -94,19 +94,49 @@ const Keyboard = () => {
   };
 
   return (
-    <div>
-      {numbers.map((k) => (
-        <Key key={k.id} value={k} onClick={() => handleNumberClick(k.text)} />
-      ))}
-
-      {operators.map((k) => (
-        <Key key={k.id} value={k} onClick={() => handleOperatorClick(k.text)} />
-      ))}
-
-      <Key key={equals.id} value={equals} onClick={handleEqualsClick} />
-      <Key key={clear.id} value={clear} onClick={handleClearClick} />
-      <Key key={del.id} value={del} onClick={handleDelClick} />
-    </div>
+    <Container style={{ width: 300 }}>
+      <Row>
+        <Col sm={12}>
+          <Row className="no-gutters">
+            <Col xs={6}>
+              <Key key={clear.id} value={clear} onClick={handleClearClick} />
+            </Col>
+            <Col xs={6}>
+              <Key key={del.id} value={del} onClick={handleDelClick} />
+            </Col>
+          </Row>
+        </Col>
+        <Col xs={9}>
+          <Row className="no-gutters">
+            {numbers.map((k, index) => (
+              <Col key={index} xs={4}>
+                <Key
+                  key={k.id}
+                  value={k}
+                  onClick={() => handleNumberClick(k.text)}
+                />
+              </Col>
+            ))}
+            <Col xs={4}>
+              <Key key={equals.id} value={equals} onClick={handleEqualsClick} />
+            </Col>
+          </Row>
+        </Col>
+        <Col xs={3}>
+          <Row className="no-gutters">
+            {operators.map((k, index) => (
+              <Col key={index} xs={12}>
+                <Key
+                  key={k.id}
+                  value={k}
+                  onClick={() => handleOperatorClick(k.text)}
+                />
+              </Col>
+            ))}
+          </Row>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
